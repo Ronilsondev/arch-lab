@@ -75,7 +75,7 @@ trap 'exit 130' INT
 trap 'exit 143' TERM
 
 # Conferência sem escrita nem replay do log Btrfs.
-mount -o ro,nologreplay,subvolid=5 "$dispositivo" "$topo"
+mount -o ro,rescue=nologreplay,subvolid=5 "$dispositivo" "$topo"
 
 raiz="$topo/@"
 snapshot="$raiz/.snapshots/$numero/snapshot"
