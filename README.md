@@ -7,7 +7,7 @@ Arch Linux e desenvolver uma instalação reproduzível.
 
 - Máquina virtual com disco de 60 GiB.
 - Arch Linux com kernels linux e linux-lts.
-- Inicialização UEFI com GRUB.
+- Inicialização em BIOS legado com GRUB, plataforma i386-pc.
 - Hyprland com UWSM.
 - Waybar, Mako e Fuzzel.
 - NetworkManager e acesso remoto por SSH.
@@ -30,7 +30,8 @@ O Btrfs utiliza compressão Zstd nível 3.
 | @pkg | /var/cache/pacman/pkg |
 
 O diretório /boot está dentro do subvolume raiz.
-A partição EFI é separada.
+Existe uma partição FAT32 separada montada em /efi, sem uso
+confirmado na inicialização atual.
 
 ## Snapshots e recuperação
 
@@ -74,6 +75,41 @@ Snapshots no mesmo disco não substituem um backup externo.
 
 As listas registram nomes de pacotes, sem fixar versões.
 
+## Configuração automatizada dos snapshots
+
+O script `scripts/configurar-snapshots.sh` reaplica a configuração
+do Arch Lab em um sistema já instalado com o layout esperado.
+
+### Verificar sem alterar
+
+```bash
+sudo ./scripts/configurar-snapshots.sh --check
+```
+
+### Aplicar
+
+```bash
+sudo ./scripts/configurar-snapshots.sh --apply
+```
+
+O script:
+
+- Verifica dependências, montagens e configurações existentes.
+- Salva cópias dos arquivos de configuração em
+  `/var/backups/arch-lab-snapshots.*`.
+- Configura a retenção dos snapshots de root e home.
+- Adiciona o hook grub-btrfs-overlayfs caso esteja ausente.
+- Configura o serviço grub-btrfsd para acompanhar /.snapshots.
+- Regenera os initramfs e o menu do GRUB.
+- Habilita os temporizadores de criação e limpeza de snapshots.
+
+Requer os pacotes necessários e as configurações Snapper
+root e home previamente criados.
+
+Não instala o GRUB, não particiona discos e não executa restauração
+permanente. Em caso de falha, interrompe a execução, mas não desfaz
+automaticamente as alterações já realizadas.
+
 ## Estado validado
 
 - [x] Ambiente gráfico e atalhos.
@@ -83,6 +119,7 @@ As listas registram nomes de pacotes, sem fixar versões.
 - [x] Inicialização de snapshot pelo GRUB.
 - [x] Restauração permanente.
 - [x] Repositório enviado ao GitHub.
+- [x] Script de configuração de snapshots e integração com GRUB.
 - [ ] Script de aplicação dos dotfiles.
 - [ ] Script de instalação do sistema.
 
