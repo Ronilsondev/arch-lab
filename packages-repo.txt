@@ -10,6 +10,7 @@ firefox
 fuzzel
 ghostscript
 git
+github-cli
 grim
 grub
 grub-btrfs
