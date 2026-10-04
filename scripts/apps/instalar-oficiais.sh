@@ -7,6 +7,10 @@ set -Eeuo pipefail
 }
 
 pacotes=(
+    # Dependências do desktop e da configuração de música
+    python git kitty mako ttf-jetbrains-mono-nerd
+    pipewire pipewire-audio pipewire-pulse wireplumber
+
     # Imagem, documentos e anotações
     inkscape gimp obsidian okular imv kate
 
