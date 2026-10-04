@@ -1,6 +1,7 @@
 7zip
 ark
 base
+base-devel
 bluez
 bluez-utils
 btrfs-progs

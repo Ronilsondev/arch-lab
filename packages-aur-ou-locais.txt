@@ -1,0 +1,7 @@
+brave-bin
+onlyoffice-bin
+paru
+visual-studio-code-bin
+yandex-browser
+yay
+yay-debug
