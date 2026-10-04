@@ -51,6 +51,7 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 okular
+otf-font-awesome
 pipewire
 pipewire-alsa
 pipewire-jack
@@ -66,6 +67,7 @@ smartmontools
 snap-pac
 snapper
 sudo
+swappy
 syncthing
 system-config-printer
 tailscale
