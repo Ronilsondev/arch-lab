@@ -15,25 +15,48 @@ dados="${XDG_DATA_HOME:-$HOME/.local/share}"
     exit 1
 }
 
-arquivos=(
-    hypr/hyprland.lua
-    waybar/config.jsonc
-    waybar/style.css
+fontes=(
+    "dotfiles/hypr/hyprland.lua"
+    "dotfiles/waybar/config.jsonc"
+    "dotfiles/waybar/style.css"
+    "scripts/desktop/capturar-tela.sh"
 )
 
-# Verifica todas as fontes antes de alterar qualquer destino.
-for arquivo in "${arquivos[@]}"; do
-    [[ -f "$repo/dotfiles/$arquivo" ]] || {
-        echo "Arquivo ausente: dotfiles/$arquivo" >&2
+destinos=(
+    "$config/hypr/hyprland.lua"
+    "$config/waybar/config.jsonc"
+    "$config/waybar/style.css"
+    "$HOME/.local/bin/capturar-tela"
+)
+
+modos=(600 600 600 755)
+
+# Confere todas as fontes e destinos antes de fazer alterações.
+for i in "${!fontes[@]}"; do
+    [[ -f "$repo/${fontes[$i]}" ]] || {
+        echo "Arquivo ausente: ${fontes[$i]}" >&2
         exit 1
     }
 
-    destino="$config/$arquivo"
-    if [[ -d "$destino" ]]; then
-        echo "Destino é um diretório; revise: $destino" >&2
+    [[ ! -d "${destinos[$i]}" ]] || {
+        echo "Destino é um diretório: ${destinos[$i]}" >&2
         exit 1
-    fi
+    }
 done
+
+bash -n "$repo/scripts/desktop/capturar-tela.sh"
+
+# As dependências precisam existir para o atalho funcionar.
+faltantes=()
+for comando in grim slurp swappy wl-copy; do
+    command -v "$comando" >/dev/null || faltantes+=("$comando")
+done
+
+if ((${#faltantes[@]})); then
+    printf 'Comandos ausentes: %s\n' "${faltantes[*]}" >&2
+    echo "Instale: sudo pacman -S --needed grim slurp swappy wl-clipboard otf-font-awesome" >&2
+    exit 1
+fi
 
 umask 077
 mkdir -p "$dados/arch-lab/backups"
@@ -41,27 +64,29 @@ backup="$(mktemp -d "$dados/arch-lab/backups/dotfiles.XXXXXXXX")"
 
 trap 'printf "Falha. Backup preservado em: %s\n" "$backup" >&2' ERR
 
-# Guarda todos os arquivos existentes antes de iniciar as cópias.
-for arquivo in "${arquivos[@]}"; do
-    destino="$config/$arquivo"
+# Preserva todos os destinos antes de iniciar a aplicação.
+for i in "${!destinos[@]}"; do
+    destino="${destinos[$i]}"
+    printf '%s\t%s\n' "$i" "$destino" >> "$backup/destinos.tsv"
+
     if [[ -e "$destino" || -L "$destino" ]]; then
-        mkdir -p "$backup/$(dirname "$arquivo")"
-        cp -a -- "$destino" "$backup/$arquivo"
+        cp -a -- "$destino" "$backup/arquivo-$i"
     else
-        printf '%s\n' "$arquivo" >> "$backup/arquivos-antes-ausentes.txt"
+        printf '%s\n' "$destino" >> "$backup/arquivos-antes-ausentes.txt"
     fi
 done
 
-for arquivo in "${arquivos[@]}"; do
-    destino="$config/$arquivo"
-    mkdir -p "$(dirname "$destino")"
+for i in "${!fontes[@]}"; do
+    destino="${destinos[$i]}"
+    mkdir -p "$(dirname -- "$destino")"
 
-    # Substitui o arquivo ou link, sem escrever no alvo de um link.
-    cp --remove-destination -- \
-        "$repo/dotfiles/$arquivo" "$destino"
+    # Substitui links sem escrever no arquivo apontado por eles.
+    cp --remove-destination -- "$repo/${fontes[$i]}" "$destino"
+    chmod "${modos[$i]}" "$destino"
 
     printf 'Aplicado: %s\n' "$destino"
 done
 
 printf '\nBackup: %s\n' "$backup"
-printf 'Dotfiles aplicados. Nenhum serviço foi reiniciado.\n'
+printf 'Dotfiles e comando de captura aplicados.\n'
+printf 'Nenhum serviço foi reiniciado.\n'
