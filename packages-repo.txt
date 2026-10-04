@@ -58,6 +58,7 @@ noto-fonts-emoji
 obsidian
 okular
 otf-font-awesome
+pavucontrol
 pipewire
 pipewire-alsa
 pipewire-jack
@@ -75,6 +76,7 @@ snap-pac
 snapper
 sudo
 swappy
+swaybg
 syncthing
 system-config-printer
 tailscale

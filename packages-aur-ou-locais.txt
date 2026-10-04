@@ -1,7 +1,10 @@
 brave-bin
+hyprfm-git
+hyprmod
 onlyoffice-bin
 paru
 visual-studio-code-bin
+waypaper
 yandex-browser
 yay
 yay-debug

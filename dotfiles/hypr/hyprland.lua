@@ -58,6 +58,7 @@ local menu        = "fuzzel"
 hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
     hl.exec_cmd("mako")
+    hl.exec_cmd("waypaper --restore")
 end)
 
 -------------------------------
@@ -369,3 +370,6 @@ hl.window_rule({
 
 -- Captura de area com editor
 hl.bind("Print", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/capturar-tela"))
+
+-- HyprMod managed settings
+require("hyprland-gui")
