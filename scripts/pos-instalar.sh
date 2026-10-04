@@ -19,6 +19,7 @@ etapas=(
     scripts/apps/instalar-oficiais.sh
     scripts/apps/instalar-aur-helpers.sh
     scripts/apps/instalar-apps-aur.sh
+    scripts/apps/instalar-controles-desktop.sh
     scripts/apps/configurar-servicos.sh
     scripts/apps/configurar-musica.sh
     scripts/apps/configurar-yazi.sh

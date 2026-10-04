@@ -11,9 +11,9 @@ command -v paru >/dev/null || {
     exit 1
 }
 
-sudo pacman -S --needed pavucontrol network-manager-applet
+sudo pacman -S --needed pavucontrol network-manager-applet swaybg
 
-paru -S --needed hyprfm-git hyprmod
+paru -S --needed hyprfm-git hyprmod waypaper
 
 echo
 echo "Instalação concluída."
