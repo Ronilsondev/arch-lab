@@ -69,12 +69,41 @@ trap limpar EXIT
 
 baixar() {
     local url="$1" revisao="$2" destino="$3"
-    git init -q "$destino"
-    git -C "$destino" remote add origin "$url"
-    git -C "$destino" fetch --depth 1 origin "$revisao"
-    git -C "$destino" checkout --detach FETCH_HEAD
-    [[ "$(git -C "$destino" rev-parse HEAD)" == "$revisao" ]] ||
-        die "Revisão inesperada em $url"
+    local cache=""
+    local candidato
+    local -a candidatos=()
+
+    case "$url" in
+        */Plymouth-Themes.git)
+            candidatos=("$HOME"/Downloads/plymouth-starlord.*/repositorio)
+            ;;
+        */qylock.git)
+            candidatos=("$HOME"/Downloads/qylock.*/repositorio)
+            ;;
+    esac
+
+    for candidato in "${candidatos[@]}"; do
+        if git -C "$candidato" cat-file -e "$revisao^{commit}" 2>/dev/null; then
+            cache="$candidato"
+            break
+        fi
+    done
+
+    if [[ -n "$cache" ]]; then
+        printf 'Usando revisão local de: %s\n' "$cache"
+        mkdir -p "$destino"
+        git -C "$cache" archive "$revisao" |
+            tar -x -C "$destino"
+    else
+        printf 'Baixando: %s\n' "$url"
+        git init -q "$destino"
+        git -C "$destino" remote add origin "$url"
+        git -C "$destino" fetch --progress --depth 1 origin "$revisao"
+        git -C "$destino" checkout --detach FETCH_HEAD
+
+        [[ "$(git -C "$destino" rev-parse HEAD)" == "$revisao" ]] ||
+            die "Revisão inesperada em $url"
+    fi
 }
 
 baixar "https://github.com/MrVivekRajan/Plymouth-Themes.git" \
