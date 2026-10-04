@@ -2,6 +2,7 @@ base
 bluez
 bluez-utils
 btrfs-progs
+cava
 cups
 cups-pk-helper
 dolphin
@@ -29,7 +30,10 @@ linux-firmware
 linux-lts
 mako
 mkinitcpio
+mpc
+mpd
 nano
+ncmpcpp
 neovim
 network-manager-applet
 networkmanager
@@ -54,6 +58,7 @@ sudo
 system-config-printer
 thunar
 ttf-dejavu
+ttf-jetbrains-mono-nerd
 ttf-liberation
 uwsm
 vim
@@ -67,6 +72,7 @@ wireplumber
 wofi
 wpa_supplicant
 xdg-desktop-portal-hyprland
+xdg-user-dirs
 xdg-utils
 xf86-video-amdgpu
 xf86-video-ati
