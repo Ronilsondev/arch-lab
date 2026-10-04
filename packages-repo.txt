@@ -29,6 +29,7 @@ inotify-tools
 intel-media-driver
 jq
 kitty
+lazygit
 less
 libpulse
 libva-intel-driver
@@ -65,11 +66,15 @@ smartmontools
 snap-pac
 snapper
 sudo
+syncthing
 system-config-printer
+tailscale
 thunar
+tree-sitter-cli
 ttf-dejavu
 ttf-jetbrains-mono-nerd
 ttf-liberation
+unzip
 uwsm
 vim
 vpl-gpu-rt
