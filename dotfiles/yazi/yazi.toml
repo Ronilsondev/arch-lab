@@ -1,0 +1,41 @@
+[mgr]
+ratio = [1, 2, 4]
+sort_by = "natural"
+sort_sensitive = false
+sort_reverse = false
+sort_dir_first = true
+show_hidden = false
+show_symlink = true
+
+[preview]
+image_quality = 80
+tab_size = 2
+max_width = 600
+max_height = 900
+
+[opener]
+edit = [
+    { run = "nvim %s", desc = "Neovim", block = true },
+]
+image = [
+    { run = "imv %s", desc = "Visualizar imagem", orphan = true },
+]
+play = [
+    { run = "mpv %s", desc = "Reproduzir no MPV", orphan = true },
+]
+pdf = [
+    { run = "okular %s", desc = "Abrir no Okular", orphan = true },
+]
+archive = [
+    { run = "ark %s", desc = "Abrir no Ark", orphan = true },
+]
+
+[open]
+prepend_rules = [
+    { mime = "image/*", use = "image" },
+    { mime = "video/*", use = "play" },
+    { mime = "audio/*", use = "play" },
+    { mime = "application/pdf", use = "pdf" },
+    { mime = "text/*", use = "edit" },
+    { url = "*.{zip,rar,7z,tar,gz,xz,zst,bz2,tgz}", use = "archive" },
+]

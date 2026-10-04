@@ -1,3 +1,5 @@
+7zip
+ark
 base
 bluez
 bluez-utils
@@ -7,8 +9,10 @@ cups
 cups-pk-helper
 dolphin
 dunst
+fd
 firefox
 fuzzel
+fzf
 ghostscript
 git
 github-cli
@@ -18,8 +22,11 @@ grub-btrfs
 gst-plugin-pipewire
 htop
 hyprland
+imagemagick
+imv
 inotify-tools
 intel-media-driver
+jq
 kitty
 less
 libpulse
@@ -32,6 +39,7 @@ mako
 mkinitcpio
 mpc
 mpd
+mpv
 nano
 ncmpcpp
 neovim
@@ -40,6 +48,7 @@ networkmanager
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
+okular
 pipewire
 pipewire-alsa
 pipewire-jack
@@ -69,6 +78,7 @@ vulkan-radeon
 waybar
 wget
 wireplumber
+wl-clipboard
 wofi
 wpa_supplicant
 xdg-desktop-portal-hyprland
@@ -77,4 +87,5 @@ xdg-utils
 xf86-video-amdgpu
 xf86-video-ati
 xf86-video-nouveau
+yazi
 zram-generator
