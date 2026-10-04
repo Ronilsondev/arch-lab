@@ -19,6 +19,7 @@ fontes=(
     "dotfiles/hypr/hyprland.lua"
     "dotfiles/waybar/config.jsonc"
     "dotfiles/waybar/style.css"
+    "dotfiles/fuzzel/fuzzel.ini"
     "scripts/desktop/capturar-tela.sh"
 )
 
@@ -26,10 +27,11 @@ destinos=(
     "$config/hypr/hyprland.lua"
     "$config/waybar/config.jsonc"
     "$config/waybar/style.css"
+    "$config/fuzzel/fuzzel.ini"
     "$HOME/.local/bin/capturar-tela"
 )
 
-modos=(600 600 600 755)
+modos=(600 600 600 600 755)
 
 # Confere todas as fontes e destinos antes de fazer alterações.
 for i in "${!fontes[@]}"; do
