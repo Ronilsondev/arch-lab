@@ -2,8 +2,10 @@
 ark
 base
 base-devel
+biber
 bluez
 bluez-utils
+btop
 btrfs-progs
 cava
 cups
@@ -15,6 +17,7 @@ firefox
 fuzzel
 fzf
 ghostscript
+gimp
 git
 github-cli
 grim
@@ -25,9 +28,11 @@ htop
 hyprland
 imagemagick
 imv
+inkscape
 inotify-tools
 intel-media-driver
 jq
+kate
 kitty
 lazygit
 less
@@ -50,6 +55,7 @@ networkmanager
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
+obsidian
 okular
 otf-font-awesome
 pipewire
@@ -58,6 +64,7 @@ pipewire-jack
 pipewire-pulse
 plymouth
 polkit-kde-agent
+qbittorrent
 qt5-wayland
 qt6-wayland
 quickshell
@@ -71,7 +78,14 @@ swappy
 syncthing
 system-config-printer
 tailscale
+telegram-desktop
+texlive-fontsrecommended
+texlive-langportuguese
+texlive-latexextra
+texlive-latexrecommended
+texstudio
 thunar
+torbrowser-launcher
 tree-sitter-cli
 ttf-dejavu
 ttf-jetbrains-mono-nerd
@@ -79,6 +93,8 @@ ttf-liberation
 unzip
 uwsm
 vim
+vlc
+vlc-plugins-all
 vpl-gpu-rt
 vulkan-intel
 vulkan-nouveau
