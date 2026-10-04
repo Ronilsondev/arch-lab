@@ -1,6 +1,7 @@
 brave-bin
 hyprfm-git
 hyprmod
+mpvpaper
 onlyoffice-bin
 paru
 visual-studio-code-bin

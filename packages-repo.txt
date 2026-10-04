@@ -74,6 +74,7 @@ slurp
 smartmontools
 snap-pac
 snapper
+socat
 sudo
 swappy
 swaybg
