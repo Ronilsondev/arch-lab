@@ -63,6 +63,7 @@
         "battery",
         "custom/left_inverse#bg_3",
         "custom/settings",
-        "tray"
+        "tray",
+        "custom/power"
     ]
 }

@@ -94,6 +94,12 @@ for comando in fish fastfetch oh-my-posh; do
     }
 done
 
+# Instala o menu de energia.
+fontes+=("scripts/desktop/menu-energia.sh")
+destinos+=("$HOME/.local/bin/menu-energia")
+modos+=(755)
+bash -n "$repo/scripts/desktop/menu-energia.sh"
+
 # Confere todas as fontes e destinos antes de fazer alterações.
 for i in "${!fontes[@]}"; do
     [[ -f "$repo/${fontes[$i]}" ]] || {
