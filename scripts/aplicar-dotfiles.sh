@@ -79,6 +79,21 @@ done
 
 bash -n "$repo/scripts/desktop/clipboard-history.sh"
 
+
+# Terminal do Arch Lab
+for relativo in kitty/kitty.conf fish/conf.d/99-arch-lab.fish fastfetch/arch-lab.jsonc fastfetch/LICENSE ohmyposh/arch-lab.omp.json ohmyposh/LICENSE; do
+    fontes+=("dotfiles/$relativo")
+    destinos+=("$config/$relativo")
+    modos+=(600)
+done
+
+for comando in fish fastfetch oh-my-posh; do
+    command -v "$comando" >/dev/null || {
+        echo "Dependência do terminal ausente: $comando" >&2
+        exit 1
+    }
+done
+
 # Confere todas as fontes e destinos antes de fazer alterações.
 for i in "${!fontes[@]}"; do
     [[ -f "$repo/${fontes[$i]}" ]] || {

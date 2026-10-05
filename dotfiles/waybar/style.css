@@ -1,106 +1,244 @@
+/*
+ * Ignore GTK theme
+ * https://github.com/Alexays/Waybar/issues/1351
+ */
+* { all: initial; }
+
+@import "themes/rose-pine.css";
+
 * {
-    font-family: "JetBrainsMono Nerd Font", monospace;
-    font-size: 13px;
-    border: none;
-    border-radius: 0;
-    min-height: 0;
+	font-family: "JetBrainsMono Nerd Font";
+	font-size: 13px;
+	font-weight: 500;
+	color: @fg;
 }
 
-window#waybar {
-    background: #191724;
-    color: #e0def4;
-    border: 1px solid #403d52;
-    border-radius: 10px;
+#waybar {
+	background-color: @shadow;
+}
+#waybar > box {
+	margin: 3px;
+	background-color: @bg_0;
 }
 
-#workspaces button {
-    padding: 0 10px;
-    margin: 4px 2px;
-    color: #908caa;
-    background: transparent;
-    border-radius: 6px;
+.module {
+	/* Vertically align modules */
+	margin-bottom: -1px;
 }
 
-#workspaces button:hover {
-    background: #403d52;
-    color: #e0def4;
-    box-shadow: none;
-    text-shadow: none;
+button {
+	border-radius: 16px;
+	padding: 0 10px;
+	min-width: 16px;
 }
-
-#workspaces button.active {
-    background: #c4a7e7;
-    color: #191724;
-}
-
-#workspaces button.urgent {
-    background: #eb6f92;
-    color: #191724;
-}
-
-#clock,
-#cpu,
-#memory,
-#network,
-#pulseaudio,
-#tray,
-#custom-wallpaper,
-#custom-settings {
-    padding: 0 8px;
-}
-
-#clock {
-    color: #c4a7e7;
-    font-weight: bold;
-}
-
-#cpu {
-    color: #9ccfd8;
-}
-
-#memory {
-    color: #f6c177;
-}
-
-#network {
-    color: #9ccfd8;
-}
-
-#pulseaudio {
-    color: #ebbcba;
-}
-
-#custom-wallpaper,
-#custom-settings {
-    background: #26233a;
-    margin: 4px 0;
-    border-radius: 6px;
-}
-
-#custom-wallpaper {
-    color: #ebbcba;
-}
-
-#custom-settings {
-    color: #c4a7e7;
-}
-
-#custom-wallpaper:hover,
-#custom-settings:hover {
-    background: #403d52;
-}
-
-#network.disconnected,
-#pulseaudio.muted {
-    color: #eb6f92;
+button:hover {
+	background-color: @bg_alt;
+	color: @fg_alt;
 }
 
 tooltip {
-    background: #1f1d2e;
-    border: 1px solid #524f67;
-    border-radius: 8px;
+	border: 2px solid @border;
+	background-color: @bg_0;
+}
+tooltip > box {
+	padding: 0 6px;
 }
 
-tooltip label {
-    color: #e0def4;
+/* Left modules */
+
+#custom-user {
+	padding: 0 16px;
+}
+
+#workspaces {
+	padding: 0 1px;
+	background-color: @bg_1;
+}
+#workspaces button.active label,
+#workspaces button.focused label {
+	font-size: 18.75px;
+	color: @accent;
+}
+
+/*
+ * Prevent large Unicode characters from increasing the bar height
+ * https://github.com/Alexays/Waybar/issues/2026
+ */
+#window { margin: -1px 0; }
+
+#window label {
+	padding-left: 12px;
+}
+
+/* Center modules */
+
+#custom-space {
+	padding: 0 3px;
+}
+
+#temperature {
+	background-color: @bg_1;
+}
+#temperature.critical {
+	color: @critical;
+}
+
+#memory {
+	background-color: @bg_2;
+}
+#memory.warning {
+	color: @warning;
+}
+#memory.critical {
+	color: @critical;
+}
+
+#cpu {
+	background-color: @bg_3;
+}
+#cpu.warning {
+	color: @warning;
+}
+#cpu.critical {
+	color: @critical;
+}
+
+#custom-distro {
+	font-size: 18.75px;
+	padding: 0 10px 0 5px;
+	background-color: @accent;
+	color: @bg_0;
+}
+
+#idle_inhibitor {
+	background-color: @bg_3;
+}
+#idle_inhibitor:hover,
+#idle_inhibitor.deactivated {
+	color: @fg_alt;
+}
+#clock.time {
+	padding-right: 6px;
+	background-color: @bg_3;
+}
+
+#clock.date {
+	padding-left: 6px;
+	background-color: @bg_2;
+}
+#clock.date:hover {
+	color: @fg_alt;
+}
+
+#network {
+	padding: 0 6px 0 4px;
+	background-color: @bg_1;
+}
+#network:hover {
+	color: @fg_alt;
+}
+#bluetooth {
+	padding: 0 4px;
+	background-color: @bg_1;
+}
+#bluetooth:hover {
+	color: @fg_alt;
+}
+#custom-update {
+	padding: 0 6px 0 1px;
+	background-color: @bg_1;
+}
+#custom-update:hover {
+	color: @fg_alt;
+}
+
+/* Right modules */
+
+#mpris {
+	padding: 0 12px;
+}
+#mpris:hover,
+#mpris.paused {
+	color: @fg_alt;
+}
+
+#pulseaudio,
+#wireplumber {
+	background-color: @bg_1;
+}
+#pulseaudio:hover,
+#pulseaudio.output.muted,
+#pulseaudio.input.source-muted,
+#wireplumber:hover,
+#wireplumber.muted {
+	color: @fg_alt;
+}
+
+#backlight {
+	background-color: @bg_2;
+}
+
+#battery {
+	background-color: @bg_3;
+}
+#battery.warning {
+	color: @warning;
+}
+#battery.critical {
+	color: @critical;
+}
+#battery.charging {
+	color: @charging;
+}
+
+#custom-power {
+	font-size: 16px;
+	border-radius: 16px;
+	padding: 0 19px 0 16px;
+	color: @accent;
+}
+#custom-power:hover {
+	background-color: @bg_alt;
+	color: @fg_alt;
+}
+
+/* Dividers */
+
+#custom-left,
+#custom-right,
+#custom-left_inverse,
+#custom-right_inverse {
+	font-size: 19.5px;
+}
+
+#custom-left.accent,
+#custom-right.accent {
+	color: @accent;
+}
+#custom-left.bg_1,
+#custom-right.bg_1 {
+	color: @bg_1;
+}
+#custom-left.bg_2,
+#custom-right.bg_2 {
+	background-color: @bg_1;
+	color: @bg_2;
+}
+#custom-left.bg_3,
+#custom-right.bg_3 {
+	background-color: @bg_2;
+	color: @bg_3;
+}
+
+#custom-left_inverse.bg_3,
+#custom-right_inverse.bg_3 {
+	color: @bg_3;
+}
+
+#custom-settings {
+    padding: 0 12px;
+    color: @accent;
+}
+#tray {
+    padding: 0 8px;
 }

@@ -26,3 +26,6 @@ done
 paru -S --needed "${pacotes[@]}"
 
 echo "Instalação concluída."
+
+# Prompt do terminal
+paru -S --needed oh-my-posh

@@ -1,67 +1,68 @@
 {
-  "layer": "top",
-  "position": "top",
-  "height": 32,
-  "spacing": 8,
-  "margin-top": 8,
-  "margin-left": 10,
-  "margin-right": 10,
-  "modules-left": [
-    "hyprland/workspaces"
-  ],
-  "modules-center": [
-    "clock"
-  ],
-  "modules-right": [
-    "cpu",
-    "memory",
-    "network",
-    "pulseaudio",
-    "custom/wallpaper",
-    "custom/settings",
-    "tray"
-  ],
-  "hyprland/workspaces": {
-    "format": "{name}",
-    "sort-by-number": true
-  },
-  "clock": {
-    "format": "{:%d/%m  %H:%M}",
-    "tooltip-format": "{:%A, %d de %B de %Y}"
-  },
-  "cpu": {
-    "format": "CPU {usage}%",
-    "interval": 5
-  },
-  "memory": {
-    "format": "RAM {}%",
-    "interval": 5
-  },
-  "network": {
-    "format-ethernet": "Rede",
-    "format-wifi": "Wi-Fi {signalStrength}%",
-    "format-disconnected": "Sem rede",
-    "tooltip-format": "{ifname}: {ipaddr}",
-    "on-click": "nm-connection-editor"
-  },
-  "pulseaudio": {
-    "format": "Vol {volume}%",
-    "format-muted": "Mudo",
-    "scroll-step": 5,
-    "on-click": "pavucontrol",
-    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-  },
-  "tray": {
-    "spacing": 8
-  },
-  "custom/wallpaper": {
-    "format": "Fundo",
-    "tooltip": false,
-    "on-click": "waypaper"
-  },
-  "custom/settings": {
-    "format": "Ajustes",
-    "tooltip": false,
-    "on-click": "hyprmod"
-  }
+	"mode": "dock",
+	"position": "top",
+	"layer": "top",
+	"width": 0,
+	"height": 0,
+	"margin": 0,
+	"spacing": 0,
+	"reload_style_on_change": true,
+
+	"include": [
+		"~/.config/waybar/modules/custom/*.jsonc",
+		"~/.config/waybar/modules/hyprland/*.jsonc",
+		// "~/.config/waybar/modules/optional/*.jsonc",
+		"~/.config/waybar/modules/*.jsonc"
+	],
+
+	"modules-left": [
+		"custom/user",
+
+		"custom/left#bg_1",
+		"hyprland/workspaces",
+		"custom/right#bg_1",
+
+		"hyprland/window"
+	],
+
+	"modules-center": [
+		"custom/space",
+
+		"custom/left#bg_1",
+
+		"custom/left#bg_2",
+		"memory",
+
+		"custom/left#bg_3",
+		"cpu",
+		"custom/left_inverse#bg_3",
+
+		"custom/left#accent",
+		"custom/distro",
+		"custom/right#accent",
+
+		"custom/right_inverse#bg_3",
+		"idle_inhibitor",
+		"clock#time",
+		"custom/right#bg_3",
+
+		"clock#date",
+		"custom/right#bg_2",
+
+		"network",
+		"custom/right#bg_1"
+	],
+
+	"modules-right": [
+        "mpris",
+        "custom/left#bg_1",
+        "group/pulseaudio",
+        "custom/left#bg_2",
+        "backlight",
+        "custom/left#bg_3",
+        "battery",
+        "custom/left_inverse#bg_3",
+        "custom/settings",
+        "tray"
+    ]
 }

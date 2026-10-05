@@ -1,0 +1,9 @@
+{
+  "network": {
+    "format-ethernet": "󰈀",
+    "format-wifi": "󰖩 {signalStrength}%",
+    "format-disconnected": "󰖪",
+    "tooltip-format": "{ifname}: {ipaddr}",
+    "on-click": "nm-connection-editor"
+  }
+}

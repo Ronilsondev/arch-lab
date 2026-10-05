@@ -30,7 +30,7 @@ preparar_modelos() {
     local faltando=0
 
     for relativo in mpd/mpd.conf ncmpcpp/config cava/config \
-                    kitty/kitty.conf mako/config; do
+                    mako/config; do
         [[ -f "$repo/dotfiles/$relativo" ]] || faltando=1
     done
 
@@ -66,7 +66,6 @@ modelos = {
     "mpd/mpd.conf": "mpd/.config/mpd/mpd.conf",
     "ncmpcpp/config": "ncmpcpp/.config/ncmpcpp/config",
     "cava/config": "cava/.config/cava/config",
-    "kitty/kitty.conf": "kitty/.config/kitty/kitty.conf",
     "mako/config": "mako/.config/mako/config",
 }
 
@@ -154,7 +153,6 @@ arquivos = [
     "mpd/mpd.conf",
     "ncmpcpp/config",
     "cava/config",
-    "kitty/kitty.conf",
     "mako/config",
 ]
 

@@ -1,0 +1,8 @@
+{
+  "custom/user": {
+    "format": "󰉋",
+    "tooltip": false,
+    "on-click": "hyprfm",
+    "on-click-right": "waypaper"
+  }
+}

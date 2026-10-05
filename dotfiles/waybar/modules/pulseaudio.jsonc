@@ -1,0 +1,15 @@
+{
+  "group/pulseaudio": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio"
+    ]
+  },
+  "pulseaudio": {
+    "format": "󰕾 {volume}%",
+    "format-muted": "󰖁",
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  }
+}

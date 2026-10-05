@@ -7,6 +7,8 @@ set -Eeuo pipefail
 }
 
 pacotes=(
+    # Dependencias do terminal personalizado
+    fish fastfetch
     # Historico do clipboard
     cliphist fuzzel wl-clipboard xdg-utils
     # Dependências do desktop e da configuração de música

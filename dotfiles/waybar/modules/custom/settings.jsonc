@@ -1,0 +1,7 @@
+{
+  "custom/settings": {
+    "format": "󰒓",
+    "tooltip": false,
+    "on-click": "hyprmod"
+  }
+}

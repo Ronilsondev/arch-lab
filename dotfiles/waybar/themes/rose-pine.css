@@ -1,0 +1,14 @@
+
+@define-color accent   #c4a7e7;
+@define-color fg       #e0def4;
+@define-color bg_0     #191724;
+@define-color bg_1     #1f1d2e;
+@define-color bg_2     #26233a;
+@define-color bg_3     #403d52;
+@define-color border   #524f67;
+@define-color shadow   shade(@bg_0, 0.75);
+@define-color warning  #f6c177;
+@define-color critical #eb6f92;
+@define-color charging #9ccfd8;
+@define-color bg_alt   #26233a;
+@define-color fg_alt   #908caa;

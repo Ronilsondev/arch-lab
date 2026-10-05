@@ -13,8 +13,10 @@ cups
 cups-pk-helper
 dolphin
 dunst
+fastfetch
 fd
 firefox
+fish
 fuzzel
 fzf
 ghostscript
