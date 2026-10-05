@@ -33,6 +33,52 @@ destinos=(
 
 modos=(600 600 600 600 755)
 
+# Inclui os arquivos adicionais da Mechabar.
+for pasta in modules scripts themes; do
+    [[ -d "$repo/dotfiles/waybar/$pasta" ]] || {
+        echo "Pasta ausente: dotfiles/waybar/$pasta" >&2
+        exit 1
+    }
+done
+
+fontes+=("dotfiles/waybar/LICENSE")
+destinos+=("$config/waybar/LICENSE")
+modos+=(600)
+
+while IFS= read -r -d '' caminho; do
+    relativo="${caminho#"$repo/dotfiles/"}"
+    fontes+=("dotfiles/$relativo")
+    destinos+=("$config/$relativo")
+
+    if [[ "$relativo" == waybar/scripts/* ]]; then
+        modos+=(755)
+    else
+        modos+=(600)
+    fi
+done < <(
+    find "$repo/dotfiles/waybar/modules" \
+         "$repo/dotfiles/waybar/scripts" \
+         "$repo/dotfiles/waybar/themes" \
+         -type f -print0
+)
+
+
+
+# Integra o seletor do clipboard.
+fontes+=("scripts/desktop/clipboard-history.sh")
+destinos+=("$HOME/.local/bin/clipboard-history")
+modos+=(755)
+
+for comando in cliphist fuzzel wl-paste wl-copy; do
+    command -v "$comando" >/dev/null || {
+        echo "Comando ausente: $comando" >&2
+        echo "Instale: sudo pacman -S --needed cliphist fuzzel wl-clipboard xdg-utils" >&2
+        exit 1
+    }
+done
+
+bash -n "$repo/scripts/desktop/clipboard-history.sh"
+
 # Confere todas as fontes e destinos antes de fazer alterações.
 for i in "${!fontes[@]}"; do
     [[ -f "$repo/${fontes[$i]}" ]] || {

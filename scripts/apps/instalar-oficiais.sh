@@ -7,6 +7,8 @@ set -Eeuo pipefail
 }
 
 pacotes=(
+    # Historico do clipboard
+    cliphist fuzzel wl-clipboard xdg-utils
     # Dependências do desktop e da configuração de música
     python git kitty mako ttf-jetbrains-mono-nerd
     pipewire pipewire-audio pipewire-pulse wireplumber
