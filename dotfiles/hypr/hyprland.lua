@@ -56,6 +56,7 @@ local menu        = "fuzzel"
 --   hl.exec_cmd("waybar & hyprpaper & firefox")
 -- end)
 hl.on("hyprland.start", function()
+    hl.exec_cmd("wl-paste --watch cliphist store")
     hl.exec_cmd("waybar")
     hl.exec_cmd("mako")
     hl.exec_cmd("waypaper --restore")
@@ -266,8 +267,8 @@ hl.device({
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
@@ -373,3 +374,16 @@ hl.bind("Print", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/capturar-tela
 
 -- HyprMod managed settings
 require("hyprland-gui")
+
+-- Historico da area de transferencia
+
+-- Historico da area de transferencia
+hl.bind("SUPER + SHIFT + V", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/clipboard-history"))
+
+-- Aplicativos do Arch Lab
+hl.bind("SUPER + Y", hl.dsp.exec_cmd("kitty -e yazi"))
+hl.bind("SUPER + N", hl.dsp.exec_cmd("kitty -e ncmpcpp"))
+hl.bind("SUPER + B", hl.dsp.exec_cmd("yandex-browser-stable"))
+
+-- Abrir HyprFM
+hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("hyprfm"))
